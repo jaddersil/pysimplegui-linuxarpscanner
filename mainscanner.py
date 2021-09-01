@@ -59,7 +59,7 @@ def core_program():
 
     send_packets()
 
-    if t.isAlive():
+    if t.is_alive():
         print('Ending...')
         window.refresh()
         sleep(10)
@@ -140,22 +140,22 @@ layout = [
 def helppage():
 
     sg.popup(
-        """        EThis is a temporary Help.
+        """HELP
 
-          It is possible to search for duplicate IPs only in the subnet your computer is on.
+It is possible to search for duplicate IPs only in the subnet your computer is on.
 
-          Before starting a scan, define at least the following:
+Before starting a scan, define at least the following:
 
-          Range:
-              Enter: o enter the first and last IP of the range you want to scan. E.g.: 10.1.8.1 and 10.1.11.255
+Range:
+    Enter: enter the first and last IP of the range you want to scan. E.g.: 10.1.8.1 and 10.1.11.255
 
-          Scan Mode:
-              Single scan: performs a scan and exits.
-              (not available) Periodic Scan: Performs a scan, waits an interval in minutes, and scans again.
-              (not available) Passive mode: Evaluates network packet traffic without provoking hosts.
+Scan Mode:
+    Single scan: performs a scan and exits.
+    Periodic Scan (not available): Performs a scan, waits an interval in minutes, and scans again.
+    Passive mode (not available): Evaluates network packet traffic without provoking hosts.
             
-          Time to listen:
-              Leave 60 or set to a suitable time for the amount of IPs in the defined range or IPs.
+Time to listen:
+    Leave 60 or set to a suitable time for the amount of IPs in the defined range or IPs.
         """, title='Help', button_type=0)
 
 
@@ -177,7 +177,7 @@ def about():
 
 
 # ------ Load window ------ #
-window = sg.Window('S1 - Duplicated IP Identifier', layout, default_element_size=(40, 1), grab_anywhere=False)
+window = sg.Window('Lan-scanner-simplegui', layout, default_element_size=(40, 1), grab_anywhere=False)
 window.Finalize()
 # window.Element('Stop').Update(disabled=True)
 window.Element('Start').Update(disabled=False)
@@ -190,7 +190,7 @@ while True:  # Event Loop
 
     if event is None or event == 'Exit':
         break
-    if event is 'Start':
+    if event == 'Start':
         window.Element('Start').Update(disabled=True)
         # window.Element('Stop').Update(disabled=False)
         # window.Element('MultResult').Update('')
@@ -206,9 +206,9 @@ while True:  # Event Loop
 
         core_program()  #  call core
 
-    elif event is 'Help':
+    elif event == 'Help':
         helppage()
-    elif event is 'About...':
+    elif event == 'About...':
         about()
 
 # done with loop... need to destroy the window as it's still open
