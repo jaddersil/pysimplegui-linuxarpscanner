@@ -1,6 +1,6 @@
 =====
-SimpleGUI-LinuxArpScanner
+lan-scanner-simplegui
 =====
 
-SimpleGUI-LinuxArpScanner is a desktop app to conduct LAN scan.
+lan-scanner-simplegui is a desktop app to scan the LAN.
 
